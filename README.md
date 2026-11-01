@@ -2,6 +2,8 @@
 
 A DeepSeek Harness skill for **finding a paper and obtaining it lawfully through a library's document-delivery service**, with a reference implementation for the Wanfang/NSTL route used by Chinese university libraries.
 
+[中文说明](README.zh.md)
+
 It is distilled from a real session at Kunming University of Science and Technology (KUST): CARSI SSO, a publisher paywall, the library's Wanfang proxy, two NSTL delivery requests, and a supplementary-material dead end.
 
 > The agent does the boring parts: resolve the citation, check open access, find the right result, fill the request, and keep the receipt. The human does the login and approves spending.
@@ -120,7 +122,7 @@ The Wanfang selectors are intentionally in `scripts/wanfang-deliver.mjs` so anot
 
 ```
 SKILL.md                     # model-facing instructions
-README.md
+README.md / README.zh.md      # English / Chinese docs
 LICENSE
 package.json
 config.example.json
