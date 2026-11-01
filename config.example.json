@@ -1,0 +1,11 @@
+{
+  "cdp": "http://127.0.0.1:9222",
+  "service": "wanfang",
+  "email": "you@example.com",
+  "institution": "Your University",
+  "libraryHome": "https://lib.example.edu.cn/",
+  "remoteAccess": "https://webvpn.example.edu.cn/",
+  "deliveryEntry": "https://erms.example.cn/entry.do?rid=...",
+  "chromeProfile": ".chrome-literature",
+  "receiptDir": "receipts"
+}

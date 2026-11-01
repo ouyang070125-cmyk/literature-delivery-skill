@@ -1,0 +1,18 @@
+{
+  "name": "literature-delivery-skill",
+  "version": "0.1.0",
+  "description": "Find papers and obtain them through lawful library document-delivery services.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "resolve": "node scripts/resolve.mjs",
+    "inspect": "node scripts/cdp-inspect.mjs",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "playwright-core": "^1.64.1"
+  }
+}
