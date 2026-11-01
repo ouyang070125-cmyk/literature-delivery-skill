@@ -21,7 +21,7 @@ It is distilled from a real session at Kunming University of Science and Technol
 ### As a global DSH skill
 
 ```powershell
-git clone https://github.com/<owner>/literature-delivery-skill.git "$HOME/.dsh/skills/literature-delivery"
+git clone https://github.com/ouyang070125-cmyk/literature-delivery-skill.git "$HOME/.dsh/skills/literature-delivery"
 cd "$HOME/.dsh/skills/literature-delivery"
 npm install
 ```
@@ -29,7 +29,7 @@ npm install
 ### As a project skill
 
 ```powershell
-git clone https://github.com/<owner>/literature-delivery-skill.git .dsh/skills/literature-delivery
+git clone https://github.com/ouyang070125-cmyk/literature-delivery-skill.git .dsh/skills/literature-delivery
 cd .dsh/skills/literature-delivery
 npm install
 ```
