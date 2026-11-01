@@ -4,6 +4,14 @@
   "description": "Find papers and obtain them through lawful library document-delivery services.",
   "type": "module",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ouyang070125-cmyk/literature-delivery-skill.git"
+  },
+  "homepage": "https://github.com/ouyang070125-cmyk/literature-delivery-skill#readme",
+  "bugs": {
+    "url": "https://github.com/ouyang070125-cmyk/literature-delivery-skill/issues"
+  },
   "engines": {
     "node": ">=20"
   },
