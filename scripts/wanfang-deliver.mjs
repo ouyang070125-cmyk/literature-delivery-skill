@@ -130,7 +130,14 @@ try {
 } catch {
   fail('Timed out waiting for Wanfang search results.', 6);
 }
-await page.waitForTimeout(1000);
+// The Vue app sometimes paints the result count before the cards. Wait for
+// the cards themselves instead of trusting a single 1s delay.
+for (let attempt = 0; attempt < 20; attempt += 1) {
+  if ((await page.locator('.normal-list').count()) > 0) break;
+  const text = await page.locator('body').innerText().catch(() => '');
+  if (text.includes('暂无文献检索结果')) break;
+  await page.waitForTimeout(500);
+}
 
 const cards = page.locator('.normal-list');
 const count = await cards.count();
