@@ -156,10 +156,12 @@ A row like `N03-S/B` that says "Supplemental Material: Figs S1–S4" is **not** 
 
 Do this instead:
 
-1. Open the publisher article page and look for a visible `Supplementary Material` / `Supporting Information` link.
-2. If it is hidden or absent, state that the publisher does not expose it (or it is behind the same entitlement).
-3. Do not submit the main article again if the user already has it.
-4. Offer to contact the corresponding author or publisher, or to submit the main article only if the user explicitly accepts that the supplement may be missing.
+1. Open the publisher article page through the **library's ERMS/proxy entry**, not the public publisher URL. A public Cloudflare challenge does not mean the library lacks access.
+2. Look for a visible `Supplementary Material` / `Supplemental Materials` / `Supporting Information` link. On ASME pages this can be a signed `supplementary_material_*.zip` CDN URL.
+3. Download the zip through the browser context and verify its contents (PDF appendices, TIFF figures, CSV/XLSX weights). See `references/supplements.md`.
+4. If it is hidden or absent, state that the publisher does not expose it (or it is behind the same entitlement).
+5. Do not submit the main article again if the user already has it.
+6. Offer to contact the corresponding author or publisher, or to submit the main article only if the user explicitly accepts that the supplement may be missing.
 
 ### Open access but publisher blocks the agent
 
@@ -201,6 +203,7 @@ Rules:
 - `scripts/receipt.mjs` — generate a redacted Markdown receipt.
 - `references/wanfang.md` — site-specific runbook and selectors.
 - `references/channels.md` — choosing between NSTL/Wanfang/CALIS and adapting to another portal.
+- `references/supplements.md` — downloading publisher supplement zips through a library proxy.
 - `references/checklist.md` — pre-submit and post-submit checks.
 - `config.example.json` — institution/service configuration template.
 

@@ -129,6 +129,7 @@ config.example.json
 references/
   wanfang.md                 # site-specific runbook and selectors
   channels.md                # NSTL/Wanfang/CALIS selection and adaptation
+  supplements.md             # publisher supplement downloads through a library proxy
   checklist.md               # pre/post-submit checks
   cases.md                   # sanitized failure modes
 scripts/
