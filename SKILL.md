@@ -224,6 +224,9 @@ Rules:
 - `references/channels.md` — choosing between NSTL/Wanfang/CALIS and adapting to another portal.
 - `references/supplements.md` — downloading publisher supplement zips through a library proxy.
 - `references/checklist.md` — pre-submit and post-submit checks.
+- `references/cases.md` — sanitized failure modes, including local-first and no-access cases.
+- `examples/references.example.json` — manifest format for the local scanner.
+- `requirements.txt` — Python dependency for the local scanner.
 - `config.example.json` — institution/service configuration template.
 
 ## Acceptance checklist
