@@ -22,9 +22,21 @@ cd .dsh/skills/literature-delivery
 npm install
 ```
 
-依赖：Node.js 20+、Chrome/Edge、`playwright-core`（`npm install` 会装）。
+依赖：Node.js 20+、Chrome/Edge、`playwright-core`（`npm install` 会装）；本地 PDF 扫描还需要 `pypdf`（`python -m pip install -r requirements.txt`）。
 
 ## 快速使用
+
+### 0. 先查电脑里有没有
+
+```bash
+python -m pip install -r requirements.txt
+python scripts/scan-local-pdfs.py \
+  --manifest examples/references.example.json \
+  --root "D:/papers" --root "$HOME/Downloads" --root "$HOME/Desktop" \
+  --json local-inventory.json
+```
+
+扫描器会读 PDF 前几页和元数据，按 DOI/标题匹配，所以文件名乱写也能找到；只下载 `missing` 的条目。
 
 ### 1. 查元数据和开放获取
 
@@ -81,7 +93,8 @@ node scripts/wanfang-deliver.mjs \
 SKILL.md                 # agent 读取的主指令
 README.md / README.zh.md
 references/              # 万方 runbook、渠道选择、检查清单、案例
-scripts/                 # 元数据、浏览器、传递、回执
+scripts/                 # 元数据、本地扫描、浏览器、传递、回执
+examples/                # 参考文献清单示例
 tests/                   # 解析与回执测试
 ```
 

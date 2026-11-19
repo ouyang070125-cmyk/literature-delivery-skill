@@ -76,7 +76,15 @@ const context = browser.contexts()[0];
 if (!context) fail('No browser context found. Start Chrome with scripts/launch-chrome.ps1.', 3);
 
 const pages = context.pages();
-let page = pages.find((p) => /erms\.cwkeji\.cn|for\.wanfangdata\.com\.cn|wanfangdata\.com\.cn/i.test(p.url()));
+let page;
+for (const candidate of pages) {
+  if (!/erms\.cwkeji\.cn|for\.wanfangdata\.com\.cn|wanfangdata\.com\.cn/i.test(candidate.url())) continue;
+  const text = await candidate.locator('body').innerText().catch(() => '');
+  if (/外文文献保障服务平台|万方/.test(text) || /\/search\/paper/i.test(candidate.url())) {
+    page = candidate;
+    break;
+  }
+}
 if (!page) {
   fail('No authenticated Wanfang tab found. Open the library delivery entry and log in first.', 3);
 }

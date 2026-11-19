@@ -8,7 +8,7 @@ description: Use when an agent must find a paper by title, DOI, or citation and 
 Get the **version of record** (or a lawful author/repository copy) into the user's hands, and leave an auditable delivery receipt. The default path is:
 
 ```
-citation -> DOI/metadata -> lawful OA? -> library/publisher access? -> document delivery -> receipt -> follow-up
+local inventory -> citation/DOI -> lawful OA? -> library/publisher access? -> document delivery -> receipt -> follow-up
 ```
 
 Document delivery is a *library service*, not a download button. The agent's job is to choose the cheapest lawful route, avoid duplicate requests, and preserve enough evidence that a human can follow up.
@@ -29,6 +29,24 @@ Document delivery is a *library service*, not a download button. The agent's job
 3. **Does the library have publisher access?** Check the library's database list and remote-access portal. Try the publisher page through the library's CARSI/Shibboleth or webvpn route. If the page still shows "Get Access"/"Available to Purchase", the institution is not entitled — stop retrying SSO.
 4. **Use document delivery.** Prefer the library's NSTL/Wanfang/CALIS route. Search by exact title; disambiguate by author, year, DOI, or paper number; submit only after the request form echoes the right title.
 5. **Record and verify.** Save service, order number, email, ETA, and the exact requested citation. Follow up only after the ETA.
+
+## Phase 0 — check the local library first
+
+If the user says "check my computer", "download the missing ones", or sends a reference list, scan for existing PDFs before touching a publisher. A file named `1-s2.0-S...pdf` or `thermal length in supercritical.pdf` may already be the paper.
+
+Use `scripts/scan-local-pdfs.py`:
+
+```bash
+python -m pip install -r requirements.txt
+python scripts/scan-local-pdfs.py \
+  --manifest examples/references.example.json \
+  --root "D:/papers" --root "$HOME/Downloads" --root "$HOME/Desktop" \
+  --json local-inventory.json
+```
+
+The scanner reads the first pages and PDF metadata, so it catches DOI matches and title matches even when filenames are meaningless. Report every existing copy and only fetch the `missing` ids. Do not copy an existing PDF into a second folder unless the user asks for consolidation.
+
+If the user did not ask for a local scan, still do a quick filename search in the obvious folders before spending a delivery request.
 
 ## Phase 1 — resolve the citation
 
@@ -197,6 +215,7 @@ Rules:
 ## Files
 
 - `scripts/resolve.mjs` — Crossref/OpenAlex metadata + OA lookup.
+- `scripts/scan-local-pdfs.py` — match existing local PDFs by DOI/title; report missing ids.
 - `scripts/launch-chrome.ps1` — visible Chrome with CDP on Windows.
 - `scripts/cdp-inspect.mjs` — list tabs/title and optionally screenshot.
 - `scripts/wanfang-deliver.mjs` — search/verify/submit a Wanfang delivery request.

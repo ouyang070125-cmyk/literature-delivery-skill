@@ -8,3 +8,8 @@ config.local.json
 .DS_Store
 Thumbs.db
 *.log
+resolve-*.json
+*-inventory.json
+scan-test.*
+__pycache__/
+*.pyc

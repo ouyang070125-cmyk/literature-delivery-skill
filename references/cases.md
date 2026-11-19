@@ -33,3 +33,21 @@ Action: check the repository before assuming the paper is closed. Tell the user 
 An ASME conference paper had a DOI and a paper number (`ICONE31-135167`). The delivery service indexed it as a conference paper with slightly different capitalization and an author-name typo.
 
 Action: search the exact title, then confirm the year/venue/paper number. Scope the result card by author before clicking `原文传递`.
+
+## Case F — Publisher PDF bot check, OA HTML still available
+
+A CC BY article page was readable, but its `View PDF` URL hit an endless "Are you a robot?" challenge on the PDF CDN. The article HTML exposed the full text, figures, and references.
+
+Action: do not bypass the challenge. If the article is OA and the HTML is complete, save a print-to-PDF copy and label it clearly as an HTML-derived full text, not the publisher's typeset PDF. If the user needs the publisher PDF, use document delivery or ask the user to download it manually.
+
+## Case G — No subscription and no delivery index
+
+A 2026 AIAA conference paper showed `No Access`; the library's AIAA access was an expired trial, and the delivery service had no record of the paper.
+
+Action: report the exact blocker and do not invent a download. Offer interlibrary loan/purchase or author contact. A "download everything" request can legitimately end with one unavailable item.
+
+## Case H — The PDF already exists under a useless filename
+
+A local file was named `thermal length in supercritical.pdf`; the paper's DOI appeared only inside the first page. Filename matching alone would have missed it.
+
+Action: scan PDF text/metadata with `scripts/scan-local-pdfs.py` before requesting a duplicate. Report the existing path and only fetch the missing items.

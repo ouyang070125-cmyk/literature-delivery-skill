@@ -43,10 +43,23 @@ DSH discovers a directory skill when it contains `SKILL.md`; the directory name 
 - Node.js 20+ (Node 24 tested)
 - Google Chrome or Chromium
 - `playwright-core` (installed by `npm install`)
+- `pypdf` for the local inventory scan (`python -m pip install -r requirements.txt`)
 - A library account with document-delivery privileges
 - Optional: `pdftotext`/`pdfinfo` (poppler) for verification
 
 ## Quick start
+
+### 0. Check what is already on disk
+
+```bash
+python -m pip install -r requirements.txt
+python scripts/scan-local-pdfs.py \
+  --manifest examples/references.example.json \
+  --root "D:/papers" --root "$HOME/Downloads" --root "$HOME/Desktop" \
+  --json local-inventory.json
+```
+
+The scanner matches DOIs and titles inside the first pages, so meaningless filenames are still found. Only the `missing` ids need a download.
 
 ### 1. Resolve and check OA
 
@@ -125,7 +138,9 @@ SKILL.md                     # model-facing instructions
 README.md / README.zh.md      # English / Chinese docs
 LICENSE
 package.json
+requirements.txt
 config.example.json
+examples/references.example.json
 references/
   wanfang.md                 # site-specific runbook and selectors
   channels.md                # NSTL/Wanfang/CALIS selection and adaptation
@@ -134,6 +149,7 @@ references/
   cases.md                   # sanitized failure modes
 scripts/
   resolve.mjs                # Crossref + OpenAlex
+  scan-local-pdfs.py         # local DOI/title inventory before downloading
   launch-chrome.ps1          # Windows visible Chrome + CDP
   cdp-inspect.mjs            # inspect tabs/title/screenshot
   wanfang-deliver.mjs        # search, verify, submit, parse order
